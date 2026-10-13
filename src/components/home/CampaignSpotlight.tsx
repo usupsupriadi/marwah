@@ -106,6 +106,9 @@ export const CampaignSpotlight: React.FC<CampaignSpotlightProps> = ({
           <img
             src={current.imageUrl}
             alt={current.title}
+            onError={(e) => {
+              (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80';
+            }}
             style={{
               width: '100%',
               height: '100%',

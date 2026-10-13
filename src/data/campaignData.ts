@@ -8,7 +8,7 @@ export const MARWAH_CAMPAIGNS: Campaign[] = [
     summary: 'Menghadirkan aliran air bersih berkelanjutan untuk wudhu dan kebutuhan ratusan keluarga di pelosok.',
     description: 'Banyak warga desa dan santri di pelosok Nusantara harus berjalan berkilo-kilo meter demi setetes air bersih. Program Wakaf Sumur Bor Marwah Wakaf Indonesia membangun instalasi sumur bor sedalam 60-80 meter, tandon penampung, dan pipanisasi tempat wudhu warga.',
     category: 'wakaf',
-    imageUrl: 'https://images.unsplash.com/photo-1541888946425-d0fbb18086f6?auto=format&fit=crop&w=800&q=80',
+    imageUrl: 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80',
     targetAmount: 50000000,
     collectedAmount: 32450000,
     donorCount: 284,

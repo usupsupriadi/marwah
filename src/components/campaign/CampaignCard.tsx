@@ -19,6 +19,9 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onDonate }
         <img
           src={campaign.imageUrl}
           alt={campaign.title}
+          onError={(e) => {
+            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80';
+          }}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />
         <span
