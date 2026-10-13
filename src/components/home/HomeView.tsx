@@ -18,6 +18,11 @@ export const HomeView: React.FC<HomeViewProps> = ({
 }) => {
   return (
     <div style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
+      <CampaignSpotlight
+        onOpenCampaigns={() => onNavigateTab('campaign')}
+        onSelectCampaign={onSelectCampaign}
+      />
+
       <DailyInspirationCard
         onOpenQuran={(surahId) => onSelectSurah(surahId || 1)}
         onOpenDua={() => onNavigateTab('quran')}
@@ -29,11 +34,6 @@ export const HomeView: React.FC<HomeViewProps> = ({
 
       <ChallengeBanner
         onOpenChallenge={() => onNavigateTab('challenge')}
-      />
-
-      <CampaignSpotlight
-        onOpenCampaigns={() => onNavigateTab('campaign')}
-        onSelectCampaign={onSelectCampaign}
       />
     </div>
   );
