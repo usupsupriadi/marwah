@@ -1,5 +1,18 @@
 import React, { useState } from 'react';
-import { X, Copy, Check, QrCode, Building, AlertCircle, Share2, ShieldCheck } from 'lucide-react';
+import {
+  X,
+  Copy,
+  Check,
+  QrCode,
+  Building,
+  AlertCircle,
+  Share2,
+  ShieldCheck,
+  MapPin,
+  Users,
+  FileText,
+  HeartHandshake
+} from 'lucide-react';
 import { Campaign } from '../../types';
 import { MARWAH_DONATION_METHODS } from '../../data/campaignData';
 
@@ -20,6 +33,10 @@ export const DonationInstructionModal: React.FC<DonationInstructionModalProps> =
 
   if (!isOpen || !campaign) return null;
 
+  const percent = campaign.targetAmount && campaign.collectedAmount
+    ? Math.min(100, Math.round((campaign.collectedAmount / campaign.targetAmount) * 100))
+    : null;
+
   const handleCopy = (accountNumber: string) => {
     navigator.clipboard.writeText(accountNumber);
     setCopiedAccount(accountNumber);
@@ -29,7 +46,7 @@ export const DonationInstructionModal: React.FC<DonationInstructionModalProps> =
   const handleShare = async () => {
     const shareData = {
       title: campaign.title,
-      text: `Mari bersama mendukung program "${campaign.title}" melalui Marwah Wakaf Indonesia.`,
+      text: `Mari bersama mendukung program "${campaign.title}" melalui Marwah Wakaf Indonesia.\n\n${campaign.description}`,
       url: window.location.href
     };
 
@@ -38,7 +55,7 @@ export const DonationInstructionModal: React.FC<DonationInstructionModalProps> =
         await navigator.share(shareData);
       } catch {}
     } else {
-      navigator.clipboard.writeText(`${shareData.text} Salurkan donasi: ${shareData.url}`);
+      navigator.clipboard.writeText(`${shareData.text}\nSalurkan donasi: ${shareData.url}`);
       setSharedToast(true);
       setTimeout(() => setSharedToast(false), 2000);
     }
@@ -51,15 +68,190 @@ export const DonationInstructionModal: React.FC<DonationInstructionModalProps> =
         <div className="modal-header">
           <div>
             <span className="badge badge-gold" style={{ marginBottom: '2px' }}>
-              PANDUAN DONASI RESMI
+              PANDUAN DONASI & DETAIL PROGRAM
             </span>
             <h3 style={{ margin: '4px 0 0 0', fontSize: '1.05rem', color: 'var(--primary-900)', fontWeight: 700 }}>
               {campaign.title}
             </h3>
           </div>
-          <button className="modal-close-btn" onClick={onClose}>
+          <button className="modal-close-btn" onClick={onClose} aria-label="Tutup Modal">
             <X size={18} />
           </button>
+        </div>
+
+        {/* Campaign Banner & Detailed Description Card */}
+        <div
+          style={{
+            borderRadius: 'var(--radius-md)',
+            overflow: 'hidden',
+            border: '1px solid var(--border-subtle)',
+            backgroundColor: '#ffffff',
+            marginBottom: '16px',
+            boxShadow: 'var(--shadow-sm)'
+          }}
+        >
+          {/* Cover Image Preview */}
+          <div style={{ position: 'relative', height: '140px', overflow: 'hidden' }}>
+            <img
+              src={campaign.imageUrl}
+              alt={campaign.title}
+              style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+            />
+            <div
+              style={{
+                position: 'absolute',
+                inset: 0,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0.1) 60%)'
+              }}
+            />
+            <span
+              className="badge badge-gold"
+              style={{
+                position: 'absolute',
+                top: '10px',
+                left: '10px',
+                boxShadow: '0 2px 6px rgba(0,0,0,0.2)'
+              }}
+            >
+              {campaign.category.toUpperCase()}
+            </span>
+
+            {campaign.location && (
+              <span
+                style={{
+                  position: 'absolute',
+                  bottom: '8px',
+                  left: '10px',
+                  color: '#ffffff',
+                  fontSize: '0.72rem',
+                  fontWeight: 600,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                  textShadow: '0 1px 3px rgba(0,0,0,0.8)'
+                }}
+              >
+                <MapPin size={12} /> {campaign.location}
+              </span>
+            )}
+          </div>
+
+          {/* Description & Impact Details Body */}
+          <div style={{ padding: '14px' }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+              <FileText size={15} color="var(--primary-700)" />
+              <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--primary-900)' }}>
+                Deskripsi Lengkap Program
+              </span>
+            </div>
+
+            {/* Narrative text */}
+            <p
+              style={{
+                fontSize: '0.82rem',
+                color: 'var(--text-body)',
+                lineHeight: '1.55',
+                margin: '0 0 12px 0',
+                backgroundColor: 'var(--primary-50)',
+                padding: '10px 12px',
+                borderRadius: 'var(--radius-sm)',
+                borderLeft: '3px solid var(--primary-600)'
+              }}
+            >
+              {campaign.description}
+            </p>
+
+            {/* Progress Bar & Amount if available */}
+            {percent !== null && (
+              <div style={{ marginBottom: '12px' }}>
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    fontSize: '0.75rem',
+                    marginBottom: '4px',
+                    color: 'var(--text-muted)'
+                  }}
+                >
+                  <span>
+                    Terkumpul:{' '}
+                    <strong style={{ color: 'var(--primary-800)' }}>
+                      Rp {campaign.collectedAmount?.toLocaleString('id-ID')}
+                    </strong>
+                  </span>
+                  <span>
+                    <strong>{percent}%</strong> dari target
+                  </span>
+                </div>
+                <div
+                  style={{
+                    width: '100%',
+                    height: '6px',
+                    backgroundColor: 'var(--primary-100)',
+                    borderRadius: 'var(--radius-full)',
+                    overflow: 'hidden'
+                  }}
+                >
+                  <div
+                    style={{
+                      width: `${percent}%`,
+                      height: '100%',
+                      backgroundColor: 'var(--primary-600)',
+                      borderRadius: 'var(--radius-full)'
+                    }}
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Beneficiary and Donor Badges */}
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '6px', fontSize: '0.72rem' }}>
+              {campaign.beneficiaryInfo && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '4px 8px',
+                    backgroundColor: '#f1f5f2',
+                    borderRadius: 'var(--radius-sm)',
+                    color: 'var(--text-body)'
+                  }}
+                >
+                  <Users size={12} color="var(--primary-700)" />
+                  <span>
+                    Penerima: <strong>{campaign.beneficiaryInfo}</strong>
+                  </span>
+                </div>
+              )}
+              {campaign.donorCount && (
+                <div
+                  style={{
+                    display: 'flex',
+                    alignItems: 'center',
+                    gap: '4px',
+                    padding: '4px 8px',
+                    backgroundColor: '#f1f5f2',
+                    borderRadius: 'var(--radius-sm)',
+                    color: 'var(--text-body)'
+                  }}
+                >
+                  <HeartHandshake size={12} color="var(--primary-700)" />
+                  <span>
+                    <strong>{campaign.donorCount}</strong> Donatur Berpartisipasi
+                  </span>
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+
+        {/* Payment Header */}
+        <div style={{ display: 'flex', alignItems: 'center', gap: '6px', marginBottom: '8px' }}>
+          <Building size={15} color="var(--primary-700)" />
+          <span style={{ fontSize: '0.82rem', fontWeight: 700, color: 'var(--primary-900)' }}>
+            Metode Penyaluran Donasi Resmi
+          </span>
         </div>
 
         {/* Method Switcher */}
