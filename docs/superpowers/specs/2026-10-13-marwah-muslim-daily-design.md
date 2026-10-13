@@ -7,7 +7,9 @@
 ---
 
 ## 1. Tujuan & Visi Produk
+
 Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang menggabungkan:
+
 1. **Pustaka Konten Islami Harian** (Al-Qur'an, Doa Harian, dan Hadits Pilihan berpenjelasan dan bersumber shahih).
 2. **Habit Tracker & Refleksi Lembut** (*Zero-guilt*, tanpa skor kesalehan atau penghakiman, dengan data privat 100% di perangkat lokal).
 3. **Tantangan Kebaikan 7 & 30 Hari** (Rutinitas kebaikan terstruktur, mencakup aspek ibadah, sosial, dan keluarga).
@@ -18,6 +20,7 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
 ## 2. Arsitektur Teknologi & Prinsip Data
 
 ### 2.1 Tech Stack
+
 - **Framework & Bundler:** React 19 + TypeScript + Vite.
 - **Desain & UI Styling:** Vanilla Modern CSS Design System (Custom Properties / CSS Tokens, Glassmorphism, nuansa Islami elegan: Deep Emerald Green `#0d5c3a`, Sage `#4e9f75`, Warm Gold `#c59b27`, dan Ivory `#f8f9f6`).
 - **Icons:** `lucide-react`.
@@ -36,6 +39,7 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
 ## 3. Modul & Struktur Halaman
 
 ### 3.1 Mobile Container & Navigasi
+
 - **Layout Shell:** Berbasis mobile-first viewport (max-width 480px di desktop dengan styling frame elegan, responsive 100% di smartphone).
 - **Header:** Logo Marwah Wakaf Indonesia, Tanggal Hijriah & Masehi, status hari ini.
 - **Bottom Navigation Bar:**
@@ -46,6 +50,7 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
   5. `Campaign` (Wakaf & Sedekah)
 
 ### 3.2 Detail Modul Fitur
+
 1. **Beranda (Home):**
    - Salam personal harian & kalender Hijriah.
    - Kartu "Ayat & Doa Hari Ini" (inspirasi harian).
@@ -89,6 +94,7 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
 ---
 
 ## 4. Keamanan, Etika & Kepatuhan BRD
+
 - **Tanpa Penilaian Kesalehan:** Tidak ada sistem ranking, leaderboard, atau poin kompetitif.
 - **Privasi Terjaga:** Catatan refleksi dan data habit murni berada di browser pengguna (`localStorage`).
 - **Kepatuhan Finansial:** Tidak mengklaim verifikasi otomatis jika pembayaran belum divalidasi oleh sistem perbankan resmi Marwah.
@@ -97,9 +103,11 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
 ---
 
 ## 5. Rencana Pengujian (Acceptance Criteria)
+
 1. Pembaca Al-Qur'an dapat menampilkan surah, teks Arab, dan terjemahan dengan presisi.
 2. Habit checklist dapat dicentang, disimpan di `localStorage`, dan kembali terbaca saat aplikasi di-refresh.
 3. Fitur Refleksi dapat menyimpan dan menghapus catatan tanpa error.
 4. Tantangan 7 hari dan 30 hari dapat dimulai dan mencatat progres harian.
 5. Nomor rekening pada modul donasi dapat disalin ke clipboard dengan sekali klik.
 6. Layout tampil proporsional, responsif, dan elegan baik di mobile view maupun desktop.
+
