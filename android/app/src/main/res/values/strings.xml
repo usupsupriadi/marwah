@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Marwah Muslim Daily</string>
+    <string name="title_activity_main">Marwah Muslim Daily</string>
+    <string name="package_name">id.or.marwah.daily</string>
+    <string name="custom_url_scheme">id.or.marwah.daily</string>
+</resources>
