@@ -1,0 +1,49 @@
+@import './styles/variables.css';
+@import './styles/components.css';
+
+/* Reset & Base Setup */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-sans);
+  background-color: var(--bg-app);
+  color: var(--text-main);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(13, 92, 58, 0.2);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(13, 92, 58, 0.4);
+}
+
+/* Smooth Interactive Elements */
+button, input, textarea, select {
+  font-family: inherit;
+}
+
+button:focus-visible, a:focus-visible {
+  outline: 2px solid var(--border-focus);
+  outline-offset: 2px;
+}
