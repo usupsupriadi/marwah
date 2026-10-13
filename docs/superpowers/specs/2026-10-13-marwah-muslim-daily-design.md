@@ -110,4 +110,3 @@ Membangun aplikasi web pendamping harian Muslim berbasis web responsif/PWA yang 
 4. Tantangan 7 hari dan 30 hari dapat dimulai dan mencatat progres harian.
 5. Nomor rekening pada modul donasi dapat disalin ke clipboard dengan sekali klik.
 6. Layout tampil proporsional, responsif, dan elegan baik di mobile view maupun desktop.
-
