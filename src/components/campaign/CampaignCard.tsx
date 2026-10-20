@@ -15,7 +15,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onDonate }
   return (
     <div className="card" style={{ padding: 0, overflow: 'hidden' }}>
       {/* Cover Image */}
-      <div style={{ position: 'relative', height: '160px' }}>
+      <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
         <img
           src={campaign.imageUrl}
           alt={campaign.title}

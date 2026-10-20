@@ -102,7 +102,7 @@ export const CampaignSpotlight: React.FC<CampaignSpotlightProps> = ({
         onTouchEnd={handleTouchEnd}
       >
         {/* Slide Image with Overlay Badges and Nav Buttons */}
-        <div style={{ position: 'relative', height: '150px', overflow: 'hidden' }}>
+        <div style={{ position: 'relative', width: '100%', aspectRatio: '4 / 3', overflow: 'hidden' }}>
           <img
             src={current.imageUrl}
             alt={current.title}
