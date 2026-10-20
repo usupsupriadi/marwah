@@ -20,7 +20,7 @@ export const CampaignCard: React.FC<CampaignCardProps> = ({ campaign, onDonate }
           src={campaign.imageUrl}
           alt={campaign.title}
           onError={(e) => {
-            (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?auto=format&fit=crop&w=800&q=80';
+            (e.target as HTMLImageElement).src = './wakaf-sumur-bor.jpg';
           }}
           style={{ width: '100%', height: '100%', objectFit: 'cover' }}
         />

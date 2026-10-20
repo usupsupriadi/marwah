@@ -19,7 +19,7 @@ export const Header: React.FC<HeaderProps> = ({ onOpenSettings }) => {
     <header className="app-header">
       <div className="header-top">
         <div className="brand-wrapper">
-          <img src="/Logo.png" alt="Marwah Wakaf Logo" className="brand-logo" />
+          <img src="./Logo.png" alt="Marwah Wakaf Logo" className="brand-logo" />
           <div>
             <h1 className="brand-title">
               Marwah <Sparkles size={16} color="#dfb236" />
